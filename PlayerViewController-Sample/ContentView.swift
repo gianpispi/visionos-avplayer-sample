@@ -15,10 +15,11 @@ struct ContentView: UIViewControllerRepresentable {
   func makeUIViewController(context: Context) -> AVPlayerViewController {
     let controller = AVPlayerViewController()
     controller.navigationItem.hidesBackButton = true
+    controller.showsPlaybackControls = false
 
-    controller.player = AVPlayer()
-    controller.player?.replaceCurrentItem(with: AVPlayerItem(url: URL(string: url)!))
-
+    controller.player = AVPlayer(url: URL(string: url)!)
+    controller.player?.playImmediately(atRate: 1.0)
+    
     return controller
   }
   
